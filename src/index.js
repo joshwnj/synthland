@@ -26,16 +26,16 @@ const master = setParams(ac.createGain(), {
 const convolver = new tuna.Convolver({
   highCut: 22050,
   lowCut: 20,
-  dryLevel: .3,
-  wetLevel: .7,
+  dryLevel: .2,
+  wetLevel: .9,
   level: 1.0,
   impulse: reverbImpulse,
   bypass: 0
 });
 
 const delay = new tuna.PingPongDelay({
-  wetLevel: .5,
-  feedback: .3,
+  wetLevel: .7,
+  feedback: .5,
   delayTimeLeft: 150,
   delayTimeRight: 200
 })

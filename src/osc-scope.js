@@ -56,17 +56,10 @@ function createRenderFunc (node, canvas) {
     context.fillStyle = 'hsl(250, 20%, 20%)'
     context.fillRect(0, 0, width, height)
 
-    context.lineWidth = 1
-    context.strokeStyle = 'white'
-
-    // draw the mid line
-    context.beginPath();
-	  context.moveTo(0,height/2);
-	  context.lineTo(width,height/2);
-	  context.stroke();
 
     // draw the oscilloscope path
-    context.lineWidth = 2
+    context.lineWidth = 1
+    context.strokeStyle = 'white'
     context.beginPath()
     const c = width / (node.fftSize/2)
 
