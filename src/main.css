@@ -36,3 +36,16 @@ body {
   left: 28vw;
   top: 55vh;
 }
+
+footer {
+  margin-top: 10vh;
+}
+
+footer a {
+  color: white;
+  text-decoration: none;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
