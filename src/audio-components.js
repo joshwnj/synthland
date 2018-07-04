@@ -155,7 +155,10 @@ export class Osc {
         this[key] = v
       } else if (v.connect) {
         v.connect(this[key])
-        this.children.push(v)
+
+        if (!(v instanceof ConstantSourceNode)) {
+          this.children.push(v)
+        }
       }
     })
   }

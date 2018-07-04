@@ -27,8 +27,8 @@ const convolver = new tuna.Convolver({
   highCut: 22050,
   lowCut: 20,
   dryLevel: .2,
-  wetLevel: .9,
-  level: 1.0,
+  wetLevel: .8,
+  level: .5,
   impulse: reverbImpulse,
   bypass: 0
 });
@@ -114,6 +114,9 @@ master.connect(scopeNode)
 // ----
 
 let lastTime
+let detuneSource1 = ac.createConstantSource()
+detuneSource1.start()
+
 setInterval(() => {
   if (ac.currentTime < lastTime) { return }
 
@@ -124,18 +127,21 @@ setInterval(() => {
     detune: rand.from([ 0, 1200, 2400 ])
   }
 
-  play(fn, props)
+  play(fn, props, detuneSource1)
   play(fn, {
     time: ac.currentTime + 3,
     duration: rand.inRange(10, 20),
-    detune: rand.from([ -1201, 1, 1201, 2400 + 700 ])
-  })
+    detune: rand.from([ 1, 1201, 2400 + 700 ])
+  }, detuneSource1)
 
   lastTime = props.time + props.duration
 }, 1000)
 
 
 let lastTime2
+let detuneSource2 = ac.createConstantSource()
+detuneSource2.start()
+
 setInterval(() => {
   if (ac.currentTime < lastTime2) { return }
 
@@ -144,24 +150,27 @@ setInterval(() => {
   const props = {
     time: ac.currentTime,
     duration: rand.inRange(10, 20),
-    detune: rand.from([ -1200, 0, 1200 ])
-  } 
+    detune: rand.from([ 0, 1200 ])
+  }
 
   const dest = rand.from([ cabinet, chorus, phaser ])
-  play(fn, props, dest)
+  play(fn, props, detuneSource2, dest)
   play(fn, {
     ...props,
     detune: props.detune + 1
-  }, dest)
+  }, detuneSource2, dest)
   
   lastTime2 = props.time + props.duration
 }, 500)
 
 // ----
 
-function play (fn, props, dest) {
+const notes = window.notes = {}
+let noteSeq = 0
+
+function play (fn, props, detuneSource, dest) {
   const note = connectAll(
-    fn(props),
+    fn(props, detuneSource),
     dest || rand.from([ cabinet, chorus, phaser ])
   )
 
@@ -172,4 +181,22 @@ function play (fn, props, dest) {
 
   note.start(time)
   note.stop(time + duration)
+
+  const id = ++noteSeq
+  notes[id] = note
+  setTimeout(() => {
+    delete notes[id]
+  }, duration * 1000)
 }
+
+setInterval(() => {
+  const amount = rand.from([0, -200])
+  const duration = 10
+  detuneSource1.offset.linearRampToValueAtTime(amount, ac.currentTime + duration)
+}, 39000)
+
+setInterval(() => {
+  const amount = rand.from([0, -200])
+  const duration = 10
+  detuneSource2.offset.linearRampToValueAtTime(amount, ac.currentTime + duration)
+}, 53000)
