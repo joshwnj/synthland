@@ -131,7 +131,7 @@ setInterval(() => {
   play(fn, {
     time: ac.currentTime + 3,
     duration: rand.inRange(10, 20),
-    detune: rand.from([ 1, 1201, 2400 + 700 ])
+    detune: rand.from([ 700, 1200 + 700 ])
   }, detuneSource1)
 
   lastTime = props.time + props.duration

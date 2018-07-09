@@ -81,7 +81,7 @@ defs[0] = ({ detune, time, duration }, detuneSource) => {
             }),
             new Osc({
               frequency: [
-                5,
+                rand.floatInRange(.1, 5),
                 new Env({
                   attack: duration * .5,
                 })
@@ -146,7 +146,7 @@ defs[1] = ({ detune, time, duration }, detuneSource) => {
             }),
             new Osc({
               frequency: [
-                5,
+                rand.floatInRange(.1, 5),
                 new Env({
                   attack: duration * .5,
                 })
@@ -216,7 +216,7 @@ defs[2] = ({ detune, time, duration }, detuneSource) => {
             }),
             new Osc({
               frequency: [
-                rand.floatInRange(1, 5),
+                rand.floatInRange(.1, 5),
                 new Env({
                   attack: duration * .5,
                 })
