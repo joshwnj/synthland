@@ -237,4 +237,52 @@ defs[2] = ({ detune, time, duration }, detuneSource) => {
   return note
 }
 
+defs[3] = ({ detune, time, duration }, detuneSource) => {
+  const frequency = rand.from([ 220, 440, 880 ])
+  const freqFactor = rand.from([ .25, .5, 1, 2, 4 ])
+  const gainFactor = rand.floatInRange(.25, 2)
+  const gainK = rand.floatInRange(-2, 2)
+
+  const note = new Filter({
+    type: rand.from(['notch', 'highpass', 'lowpass']),
+    frequency: [
+      15000,
+      new Osc({
+        frequency: [
+          rand.floatInRange(.1, 5),
+          new Env({
+            attack: duration * .5,
+          })
+        ],
+        gain: [
+          10000,
+          new Env({
+            attack: duration * .3,
+          })
+        ]
+      })
+    ],
+    Q: 1
+  }, [
+    new Osc({
+      type: rand.from(oscTypes),
+
+      detune: [
+        detune,
+        detuneSource
+      ],
+
+      gain: new Env({
+        attack: rand.floatInRange(0.01, duration * .5),
+        release: duration * 1.5,
+        to: .1
+      }),
+
+      frequency,
+    })
+  ])
+
+  return note
+}
+
 export default defs

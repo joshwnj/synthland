@@ -163,6 +163,30 @@ setInterval(() => {
   lastTime2 = props.time + props.duration
 }, 500)
 
+let lastTime3
+let detuneSource3 = ac.createConstantSource()
+detuneSource3.start()
+
+setInterval(() => {
+  if (ac.currentTime < lastTime) { return }
+
+  const fn = defs[3]
+  const props = {
+    time: ac.currentTime,
+    duration: rand.inRange(10, 20),
+    detune: rand.from([ 0, 1200, 2400 ])
+  }
+
+  play(fn, props, detuneSource1)
+  play(fn, {
+    time: ac.currentTime + 3,
+    duration: rand.inRange(10, 20),
+    detune: rand.from([ 700, 1200 + 700 ])
+  }, detuneSource3)
+
+  lastTime = props.time + props.duration
+}, 1000)
+
 // ----
 
 const notes = window.notes = {}
@@ -200,3 +224,9 @@ setInterval(() => {
   const duration = 10
   detuneSource2.offset.linearRampToValueAtTime(amount, ac.currentTime + duration)
 }, 53000)
+
+setInterval(() => {
+  const amount = rand.from([0, -200])
+  const duration = 10
+  detuneSource3.offset.linearRampToValueAtTime(amount, ac.currentTime + duration)
+}, 51000)
