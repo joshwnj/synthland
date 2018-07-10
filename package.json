@@ -1,12 +1,13 @@
 {
   "name": "synthland",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Plays randomly generated FM synths.",
   "main": "src/index.js",
   "bin": {
     "synthland": "bin/synthland"
   },
   "files": [
+    "bin",
     "dist"
   ],
   "scripts": {
