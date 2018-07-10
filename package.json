@@ -1,7 +1,7 @@
 {
   "name": "synthland",
   "version": "0.1.0",
-  "description": "",
+  "description": "Plays randomly generated FM synths.",
   "main": "src/index.js",
   "bin": {
     "synthland": "bin/synthland"
@@ -26,5 +26,13 @@
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "gh-pages": "^1.2.0",
     "parcel": "^1.9.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshwnj/synthland.git"
+  },
+  "bugs": {
+    "url": "https://github.com/joshwnj/synthland/issues"
+  },
+  "homepage": "https://github.com/joshwnj/synthland#readme"
 }

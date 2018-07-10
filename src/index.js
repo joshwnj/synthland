@@ -73,8 +73,8 @@ const compressor = setParams(ac.createDynamicsCompressor(), {
   knee: 0,
   reduction: 20.0,
   ratio: 10,
-  attack: 3.0001,
-  release: 1.050
+  attack: 1.0,
+  release: 1.0
 })
 
 connectAll(
@@ -174,7 +174,7 @@ setInterval(() => {
   const props = {
     time: ac.currentTime,
     duration: rand.inRange(10, 20),
-    detune: rand.from([ 0, 1200, 2400 ])
+    detune: rand.from([ 0, 1200 ])
   }
 
   play(fn, props, detuneSource1)
