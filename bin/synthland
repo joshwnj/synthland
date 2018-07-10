@@ -3,5 +3,6 @@
 const { exec } = require('child_process')
 const path = require('path')
 
-const distDir = path.resolve(__dirname, '..', 'dist')
-exec(`npx electron-start ${distDir}`)
+const cmd = exec(`npm run electron`)
+cmd.stdout.pipe(process.stdout)
+cmd.stderr.pipe(process.stderr)

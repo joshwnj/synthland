@@ -11,6 +11,7 @@
     "dist"
   ],
   "scripts": {
+    "electron": "electron-start dist",
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url ./",
     "deploy": "gh-pages -d dist",
@@ -20,6 +21,7 @@
   "author": "joshwnj",
   "license": "MIT",
   "dependencies": {
+    "electron-start": "^1.8.1",
     "frequency-to-midi-note-number": "^0.1.0",
     "tunajs": "^1.0.1",
     "wakit": "^1.0.0"
