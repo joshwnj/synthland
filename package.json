@@ -1,8 +1,11 @@
 {
   "name": "synthland",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
   "main": "src/index.js",
+  "bin": {
+    "synthland": "bin/synthland"
+  },
   "scripts": {
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --public-url ./",
@@ -15,8 +18,7 @@
   "dependencies": {
     "frequency-to-midi-note-number": "^0.1.0",
     "tunajs": "^1.0.1",
-    "wakit": "^1.0.0",
-    "web-audio-oscillators": "^1.0.4"
+    "wakit": "^1.0.0"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
