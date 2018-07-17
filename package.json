@@ -21,6 +21,7 @@
   "author": "joshwnj",
   "license": "MIT",
   "dependencies": {
+    "electron": "^2.0.5",
     "electron-run-in-browser": "^1.0.0",
     "frequency-to-midi-note-number": "^0.1.0",
     "tunajs": "^1.0.1",
