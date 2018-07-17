@@ -115,15 +115,32 @@ master.connect(scopeNode)
 
 const muteCheckbox = document.querySelector('.mute input[type=checkbox]')
 const muteText = document.querySelector('.mute .text')
-muteCheckbox.addEventListener('change', (event) => {
+muteCheckbox.addEventListener('change', updateMute)
+
+window.document.addEventListener(
+  'keydown',
+  onKeyDown,
+  false
+)
+
+function onKeyDown (event) {
+  switch (event.key) {
+  case ' ':
+  case 'm':
+    muteCheckbox.checked = !muteCheckbox.checked
+    updateMute()
+    break
+  }
+}
+
+function updateMute () {
   const isMuted = muteCheckbox.checked
 
   muteText.innerHTML = isMuted ? 'unmute' : 'mute'
   setParams(master, {
-      gain: isMuted ? 0 : 1
+    gain: isMuted ? 0 : 1
   })
-})
-
+}
 
 // ----
 

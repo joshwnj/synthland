@@ -15,7 +15,7 @@ body {
 }
 
 .title {
-  margin: 70vh 0 0 0;
+  margin: 65vh 0 0 0;
   padding: 0;
   width: 100vw;
   text-align: center;
@@ -34,7 +34,7 @@ body {
   height: 10vh;
   position: absolute;
   left: 28vw;
-  top: 55vh;
+  top: 52vh;
 }
 
 .mute {
