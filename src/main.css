@@ -37,6 +37,19 @@ body {
   top: 55vh;
 }
 
+.mute {
+  display: block;
+  margin-bottom: 1em;
+}
+
+.mute input {
+  display: none;
+}
+
+.mute .text:hover {
+  text-decoration: underline;
+}
+
 footer {
   margin-top: 10vh;
 }

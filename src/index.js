@@ -113,6 +113,20 @@ master.connect(scopeNode)
 
 // ----
 
+const muteCheckbox = document.querySelector('.mute input[type=checkbox]')
+const muteText = document.querySelector('.mute .text')
+muteCheckbox.addEventListener('change', (event) => {
+  const isMuted = muteCheckbox.checked
+
+  muteText.innerHTML = isMuted ? 'unmute' : 'mute'
+  setParams(master, {
+      gain: isMuted ? 0 : 1
+  })
+})
+
+
+// ----
+
 let lastTime
 let detuneSource1 = ac.createConstantSource()
 detuneSource1.start()
